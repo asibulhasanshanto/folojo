@@ -9,6 +9,7 @@
         /* font-family: "Poppins", sans-serif; */
         font-family: "Fira Sans", sans-serif;
         /* font-family: "Baloo Da 2", sans-serif; */
+        scroll-behavior: smooth;
     }
 
     h1 {
@@ -39,7 +40,7 @@
 
 @layer components {
     .container {
-        @apply mx-auto max-w-[80rem] px-4 sm:px-6 lg:px-8;
+        @apply mx-auto max-w-[75rem] px-4 sm:px-6 lg:px-8;
     }
 
     .background-home {
@@ -54,7 +55,23 @@
         z-index: -1;
     }
 
-    .menu-button{
-        @apply text-xl font-bold;
+    .menu-button {
+        @apply text-lg font-bold text-text_color;
+    }
+    .bn_text {
+        font-family: "Baloo Da 2", sans-serif;
+    }
+
+    .nav {
+        position: fixed; /* Make it stick/fixed */
+        top: 0; /* Stay on top */
+        transition: top 0.3s;
+        width: 100%;
+    }
+    .order_method {
+        background-image: url('/public/images/bh_2.png'), url('/public/images/mango_bg.png');
+        background-position: left bottom, right bottom;
+        background-size: 500px, 500px;
+        background-repeat: no-repeat, no-repeat;
     }
 }
