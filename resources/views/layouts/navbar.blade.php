@@ -8,7 +8,7 @@
         </div>
         <!-- logo -->
         <div class="logo absolute right-0 xl:left-[45%]">
-            <img src="{{ asset('images/logo.png') }}" alt="logo" class="h-[70px] w-auto">
+            <img src="{{ asset('images/logo.png') }}" alt="logo" class="h-[50px] sm:h-[70px] w-auto">
         </div>
 
     </div>

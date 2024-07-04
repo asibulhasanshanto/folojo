@@ -11,6 +11,10 @@ Route::get('/about', function () {
     return view('pages.about');
 });
 
+Route::get('/products', function () {
+    return view('pages.products');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
