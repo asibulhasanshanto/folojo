@@ -74,4 +74,7 @@
         background-size: 500px, 500px;
         background-repeat: no-repeat, no-repeat;
     }
+    .pproduct_active{
+        @apply border-2 border-text_color;
+    }
 }

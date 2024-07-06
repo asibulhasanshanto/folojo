@@ -12,7 +12,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('pages.products');
+        $products = Product::paginate(8);
+        return view('pages.products')->with('products', $products);
     }
 
     /**

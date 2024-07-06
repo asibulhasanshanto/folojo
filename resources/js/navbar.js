@@ -1,5 +1,4 @@
 var prevScrollpos = window.pageYOffset;
-console.log("hello");
 window.onscroll = function () {
     var currentScrollPos = window.pageYOffset;
     if (prevScrollpos > currentScrollPos) {

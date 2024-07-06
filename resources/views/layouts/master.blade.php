@@ -20,7 +20,7 @@
     @yield('styles')
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/navbar.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/navbar.js', 'resources/js/productDetails.js'])
 </head>
 
 <body class="">
@@ -36,6 +36,9 @@
         <!-- footer -->
         @include('layouts.footer')
     </div>
+
+    <!-- scripts -->
+    @yield('scripts')
 </body>
 
 </html>
