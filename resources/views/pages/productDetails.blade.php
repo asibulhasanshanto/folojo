@@ -14,8 +14,8 @@
 
             <div class="w-full  lg:sticky top-0 flex gap-2">
                 <div class="flex flex-col sm:space-y-3 w-8 sm:w-16 max-h-96 mb-4 gap-2 overflow-y-scroll no-scrollbar ">
-                    <div class=" product_active rounded-md">
-                        <img id="image_1" src="{{url('images/product.jpg')}}" alt="Product1" class="image_selector cursor-pointer rounded-md w-9 h-9 sm:w-16  sm:h-16 object-cover " />
+                    <div class=" rounded-md">
+                        <img id="image_1" src="{{url('images/product.jpg')}}" alt="Product1" class="product_active  image_selector cursor-pointer rounded-md w-9 h-9 sm:w-16  sm:h-16 object-cover " />
                     </div>
 
                     <div class="  rounded-md">

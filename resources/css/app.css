@@ -69,12 +69,14 @@
         width: 100%;
     }
     .order_method {
-        background-image: url('/public/images/bh_2.png'), url('/public/images/mango_bg.png');
+        background-image: url("/public/images/bh_2.png"),
+            url("/public/images/mango_bg.png");
         background-position: left bottom, right bottom;
         background-size: 500px, 500px;
         background-repeat: no-repeat, no-repeat;
     }
-    .pproduct_active{
-        @apply border-2 border-text_color;
+    .product_active {
+        border: 4px solid;
+        border-color: #154726;
     }
 }

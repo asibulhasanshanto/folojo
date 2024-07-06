@@ -4,9 +4,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     image_selectors.forEach((thumbnail) => {
         thumbnail.addEventListener("click", function () {
-            document.getElementById("current_image").src = thumbnail.getAttribute("src");
+            document.getElementById("current_image").src =
+                thumbnail.getAttribute("src");
             image_selectors.forEach((thumbnail) => {
-                thumbnail.classList.remove("selected");
-            });        });
+                thumbnail.classList.remove("product_active");
+            });
+            thumbnail.classList.add("product_active");
+        });
     });
 });
