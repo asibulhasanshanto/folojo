@@ -12,6 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         //
+        // $middleware->add('auth', \App\Http\Middleware\Authenticate::class);
+        // $middleware->add('admin', \App\Http\Middleware\admin::class);
+        $middleware->alias([
+            'admin' => \App\Http\Middleware\admin::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

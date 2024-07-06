@@ -1,7 +1,7 @@
 <div class="lg:pl-64">
-    <div class="lg:px-8">
+    <div class="lg:px-8 ">
         <div class="mx-auto flex flex-col lg:max-w-4xl">
-            <div class="sticky top-0 z-10 flex h-16 flex-shrink-0 border-b border-gray-200 bg-white">
+            <div class="sticky top-0 container z-10 flex h-16 flex-shrink-0 border-b border-gray-200 bg-white ">
                 <button id="mobile_sidebar_open" type="button" class="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 lg:hidden">
                     <span class="sr-only">Open sidebar</span>
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
