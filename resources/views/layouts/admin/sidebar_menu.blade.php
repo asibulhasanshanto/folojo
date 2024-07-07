@@ -3,7 +3,7 @@
         <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
         {{-- check if current route is dasboard --}}
 
-        <a href="#"
+        <a href="{{ route('dashboard') }}"
             class="{{ Route::currentRouteName() == 'dashboard' ? 'bg-gray-100' : '' }} text-gray-900 group flex items-center rounded-md py-2 px-2 text-base font-medium">
             <!-- Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500" -->
             <svg class="text-gray-500 mr-4 h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -24,8 +24,9 @@
             Users
         </a>
 
-        <a href="#"
-            class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center rounded-md py-2 px-2 text-base font-medium">
+
+        <a href="{{ route('admin.product.view') }}"
+            class="{{ Str::contains(Route::currentRouteName(), 'product') ? 'bg-gray-100' : '' }} text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center rounded-md py-2 px-2 text-base font-medium">
             <svg class="text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6 flex-shrink-0"
                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">

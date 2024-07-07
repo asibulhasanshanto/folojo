@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminProductsController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -24,9 +26,11 @@ Route::middleware('auth')->group(function () {
 
 // route for admins with admin middleware
 Route::middleware('auth','admin')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->middleware([ 'verified'])->name('dashboard');
+    // dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    // products
+    Route::get('/admin/products', [AdminProductsController::class, 'index'])->name('admin.product.view');
+    Route::get('/admin/products/{product}', [AdminProductsController::class, 'show'])->name('admin.product.show');
 
 });
 
