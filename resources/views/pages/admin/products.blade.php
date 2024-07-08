@@ -1,5 +1,10 @@
 <x-app-layout>
     <div class="container  px-4  sm:px-6  lg:px-8">
+        <div class="">
+            <a href="{{ route('admin.product.create') }}"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-3 rounded float-right ">Create
+                Product</a>
+        </div>
         <h2 class="text-3xl  font-bold tracking-tight bn_text ">আম</h2>
 
         <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">

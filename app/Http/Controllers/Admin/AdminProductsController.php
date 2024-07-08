@@ -22,7 +22,10 @@ class AdminProductsController extends Controller
      */
     public function create()
     {
-        //
+        // product code will be an unique 8 character string
+        $product_code = substr(md5(uniqid(rand(), true)), 0, 8);
+
+        return view('pages.admin.createProduct')->with('product_code', $product_code);
     }
 
     /**
@@ -30,7 +33,16 @@ class AdminProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:products,name',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'product_code' => 'required|unique:products,product_code',
+        ]);
+
+        Product::create($request->all());
+
+        return redirect()->route('admin.product.view')->with('success', 'Product created successfully');
     }
 
     /**
@@ -46,7 +58,7 @@ class AdminProductsController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('pages.admin.editProduct')->with('product', $product);
     }
 
     /**
@@ -54,7 +66,16 @@ class AdminProductsController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:products,name,' . $product->id,
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'product_code' => 'required|unique:products,product_code,' . $product->id,
+        ]);
+
+        $product->update($request->all());
+
+        return redirect()->route('admin.product.view')->with('success', 'Product updated successfully');
     }
 
     /**

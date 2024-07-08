@@ -30,7 +30,11 @@ Route::middleware('auth','admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // products
     Route::get('/admin/products', [AdminProductsController::class, 'index'])->name('admin.product.view');
+    Route::get('/admin/products/create', [AdminProductsController::class, 'create'])->name('admin.product.create');
+    Route::post('/admin/products', [AdminProductsController::class, 'store'])->name('admin.product.store');
     Route::get('/admin/products/{product}', [AdminProductsController::class, 'show'])->name('admin.product.show');
+    Route::get('/admin/products/{product}/edit', [AdminProductsController::class, 'edit'])->name('admin.product.edit');
+    Route::patch('/admin/products/{product}', [AdminProductsController::class, 'update'])->name('admin.product.update');
 
 });
 

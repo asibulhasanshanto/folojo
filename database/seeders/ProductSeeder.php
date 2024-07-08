@@ -16,11 +16,12 @@ class ProductSeeder extends Seeder
             'product.jpg',
             'product2.png',
         ];
-        // seed product using products factory and also insert product images for each product 
+        // seed product using products factory and also insert product images for each product
         \App\Models\Product::factory(10)->create()->each(function ($product) use ($productImages) {
             foreach ($productImages as $image) {
                 $product->images()->create([
                     'image' => $image,
+                    
                 ]);
             }
         });

@@ -25,6 +25,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'asibulhasan.rucse.18@gmail.com',
             'role' => 'admin',
         ]);
+        User::factory()->create([
+            'name' => 'Sami Sadik',
+            'email' => 'info.folojo@gmail.com',
+            'role' => 'admin',
+        ]);
 
         $this->call([
             ProductSeeder::class,

@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->longText('description');
-            $table->decimal('price', 8, 2);
+        $table->integer('price');
+            $table->string('product_code');
             $table->unsignedBigInteger('clicks')->default(0);
             $table->unsignedBigInteger('buy_clicks')->default(0);
             $table->timestamps();
