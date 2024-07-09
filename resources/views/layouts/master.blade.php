@@ -30,7 +30,7 @@
         <!-- header -->
         @include('layouts.navbar')
 
-        
+
         <!-- Page Content -->
         <main>
             @yield('content')
