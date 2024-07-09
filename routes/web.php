@@ -16,6 +16,7 @@ Route::get('/about', function () {
 
 Route::get('/products', [ProductController::class, 'index'])->name('product.view');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/products/{product}/buy', [ProductController::class, 'buyNow'])->name('product.buy');
 
 
 Route::middleware('auth')->group(function () {

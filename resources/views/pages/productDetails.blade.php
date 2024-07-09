@@ -20,7 +20,7 @@
                             <div class=" rounded-md">
                                 <img id="{{ 'image_' . $image->id }}" src="{{ asset('images/products/' . $image->image) }}"
                                     alt="Product1"
-                                    class="product_active  image_selector cursor-pointer rounded-md w-9 h-9 sm:w-16  sm:h-16 object-cover " />
+                                    class="image_selector cursor-pointer rounded-md w-9 h-9 sm:w-16  sm:h-16 object-cover " />
                             </div>
                         @endforeach
 
@@ -41,14 +41,23 @@
                         {{ $product->extra_info }}</h2>
 
                     <!-- pricing -->
-                    <div class="py-10">
+                    <div class="pt-10 pb-6">
                         <h3 class="text-bn_text text-text_color font-bold text-4xl sm:text-5xl">{{ $product->price }}/- টাকা
                         </h3>
                     </div>
 
+                    {{-- product_code --}}
+                    <div class="flex flex-col mb-4 items-start justify-center  ">
+                        <p class="font-bold text-text_color">Product Code:</p>
+                        <p class="text-text_bn text-text_color bg-[#faf3e6] px-4 py-2 rounded-md">
+                            {{ $product->product_code }}
+
+                        </p>
+                    </div>
+
                     <!-- buy now -->
                     <div class="flex gap-4 ">
-                        <a href="#"
+                        <a href="{{ route('product.buy', ['product' => $product]) }}"
                             class="text-white bg-text_color px-11 py-3 font-bold bn_text rounded-md hover:bg-text_color/90">এখনই
                             কিনুন</a>
 

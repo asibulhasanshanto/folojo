@@ -16,51 +16,20 @@ class ProductController extends Controller
         return view('pages.products')->with('products', $products);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
      */
     public function show(Product $product)
     {
+        // increment the view count
+        $product->increment('clicks');
         return view('pages.productDetails')->with('product', $product);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Product $product)
+    public function buyNow(Product $product)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Product $product)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Product $product)
-    {
-        //
+        $product->increment('buy_clicks');
+        return redirect()->away('https://www.facebook.com/Foolojo?mibextid=ZbWKwL');
     }
 }
