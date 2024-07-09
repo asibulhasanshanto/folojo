@@ -13,17 +13,28 @@
                 <a href="{{ route('admin.product.show', ['product' => $product->id]) }}"
                     class="group relative bg-white  rounded-b-md hover:scale-105 transition-all duration-200 cursor-pointer">
                     <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-md  lg:aspect-none  lg:h-48">
-                        <img src="{{ asset('images/product.jpg') }}" alt="Front of men&#039;s Basic Tee in black."
-                            class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        {{-- check if product has images --}}
+                        @if ($product->images->count() > 0)
+                            <img src="{{ asset('images/products/' . $product->images->first()->image) }}"
+                                alt="Front of men&#039;s Basic Tee in black."
+                                class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        @else
+                            <img src="{{ asset('images/products/default.jpg') }}"
+                                alt="Front of men&#039;s Basic Tee in black."
+                                class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        @endif
+                        {{-- <img src="{{ asset('images/products/' . $product->images == null ? '' : $product->images->first()->image) }}"
+                            alt="Front of men&#039;s Basic Tee in black."
+                            class="h-full w-full object-cover object-center lg:h-full lg:w-full"> --}}
                     </div>
                     <div class=" flex flex-col items-center justify-center p-2">
 
-                        <p class="mt-1 bn_text text-bold text-text_color text-center ">আম্রপালি আম - ১০ কেজি</p>
-                        <p class="mt-1 bn_text text-bold text-sm text-text_color text-center ">(প্যাকেজিং ও ডেলিভারী সহ
-                            )
+                        <p class="mt-1 bn_text text-bold text-text_color text-center ">{{ $product->name }}</p>
+                        <p class="mt-1 bn_text text-bold text-sm text-text_color text-center ">
+                            {{ $product->extra_info }}
                         </p>
 
-                        <h3 class="bn_text font-bold text-2xl text-text_color">১৮০০/- টাকা </h3>
+                        <h3 class="bn_text font-bold text-2xl text-text_color">{{ $product->price }}/- টাকা </h3>
 
 
                     </div>

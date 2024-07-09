@@ -20,6 +20,15 @@
                         @enderror
                     </div>
                     <div>
+                        <label for="extra_info" class="font-bold bn_text">Extra Info</label>
+                        <input type="text" name="extra_info" id="extra_info"
+                            class="w-full p-2 border  rounded-md @error('extra_info') border-red-500 @enderror"
+                            placeholder="Product Extra Info" value="{{ old('extra_info') }}">
+                        @error('extra_info')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div>
                         <label for="price" class="font-bold bn_text">Price</label>
                         <input type="number" name="price" id="price"
                             class="w-full p-2 border  rounded-md @error('price') border-red-500 @enderror"

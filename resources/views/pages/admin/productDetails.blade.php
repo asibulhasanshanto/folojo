@@ -24,7 +24,7 @@
                         @if ($product->images->count() > 0)
                             @foreach ($product->images as $image)
                                 <div class="h-48 w-auto rounded-md relative">
-                                    <img src="{{ asset('images/product.jpg') }}"
+                                    <img src="{{ asset('images/products/' . $image->image) }}"
                                         alt="Front of men&#039;s Basic Tee in black."
                                         class="h-full w-full object-cover object-center rounded-md">
 
@@ -73,6 +73,10 @@
                         <tr>
                             <td class="font-bold bn_text">Name</td>
                             <td>{{ $product->name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold bn_text">Extra Info</td>
+                            <td>{{ $product->extra_info }}</td>
                         </tr>
                         <tr>
                             <td class="font-bold bn_text">Price</td>

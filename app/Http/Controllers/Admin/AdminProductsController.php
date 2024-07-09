@@ -36,9 +36,10 @@ class AdminProductsController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:products,name',
+            'extra_info' => 'nullable',
             'description' => 'required',
             'price' => 'required|numeric',
-            'product_code' => 'required|unique:products,product_code|digits:8',
+            'product_code' => 'required|unique:products,product_code|max:8',
         ]);
 
         Product::create($request->all());
@@ -69,9 +70,10 @@ class AdminProductsController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:products,name,' . $product->id,
+            'extra_info' => 'nullable',
             'description' => 'required',
             'price' => 'required|numeric',
-            'product_code' => 'required|digits:8|unique:products,product_code,' . $product->id,
+            'product_code' => 'required|max:8|unique:products,product_code,' . $product->id,
         ]);
 
         $product->update($request->all());
@@ -112,6 +114,8 @@ class AdminProductsController extends Controller
     public function deleteProductImage(Product $product, ProductImages $image)
     {
         $product->images()->where('id', $image->id)->delete();
+        // also delete the image from storage
+        unlink(public_path('images/products/' . $image->image));
 
         return redirect()->route('admin.product.show', $product->id)->with('success', 'Image deleted successfully');
     }
