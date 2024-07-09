@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
 // route for admins with admin middleware
 Route::middleware('auth','admin')->group(function () {
     // dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // products
     Route::get('/admin/products', [AdminProductsController::class, 'index'])->name('admin.product.view');
     Route::get('/admin/products/create', [AdminProductsController::class, 'create'])->name('admin.product.create');

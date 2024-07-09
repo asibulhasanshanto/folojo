@@ -86,6 +86,15 @@
                             <td class="font-bold bn_text">Product Code</td>
                             <td>{{ $product->product_code }}</td>
                         </tr>
+
+                        <tr>
+                            <td class="font-bold bn_text">Clicks</td>
+                            <td>{{ $product->clicks }}</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold bn_text">Buy Clicks</td>
+                            <td>{{ $product->buy_clicks }}</td>
+                        </tr>
                     </table>
                 </div>
             </div>
