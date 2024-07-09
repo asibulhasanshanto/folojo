@@ -9,6 +9,7 @@ export default defineConfig({
                 "resources/js/app.js",
                 "resources/js/navbar.js",
                 "resources/js/productDetails.js",
+                "resources/js/admin/sidebar.js",
             ],
             refresh: true,
         }),
