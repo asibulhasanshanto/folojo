@@ -23,7 +23,18 @@
 
         @include('layouts.admin.sidebar')
         @include('layouts.admin.navbar')
-        
+        {{-- toast notification if session has any success , error message --}}
+        @if (session()->has('success'))
+            <div class="bg-green-500 text-white p-4 text-center">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session()->has('error'))
+            <div class="bg-red-500 text-white p-4 text-center">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <main>
             {{ $slot }}
         </main>

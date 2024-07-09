@@ -35,6 +35,15 @@ Route::middleware('auth','admin')->group(function () {
     Route::get('/admin/products/{product}', [AdminProductsController::class, 'show'])->name('admin.product.show');
     Route::get('/admin/products/{product}/edit', [AdminProductsController::class, 'edit'])->name('admin.product.edit');
     Route::patch('/admin/products/{product}', [AdminProductsController::class, 'update'])->name('admin.product.update');
+    Route::delete('/admin/products/{product}', [AdminProductsController::class, 'destroy'])->name('admin.product.destroy');
+
+    // get upload image form
+    Route::get('/admin/products/{product}/images', [AdminProductsController::class, 'uploadImagesPage'])->name('admin.product.image.upload');
+
+    // save product image
+    Route::post('/admin/products/{product}/images', [AdminProductsController::class, 'saveProductImage'])->name('admin.product.image.store');
+    // delete product image
+    Route::delete('/admin/products/{product}/images/{image}', [AdminProductsController::class, 'deleteProductImage'])->name('admin.product.image.destroy');
 
 });
 

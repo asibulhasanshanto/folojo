@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\ProductImages;
 use Illuminate\Http\Request;
 
 class AdminProductsController extends Controller
@@ -37,7 +38,7 @@ class AdminProductsController extends Controller
             'name' => 'required|unique:products,name',
             'description' => 'required',
             'price' => 'required|numeric',
-            'product_code' => 'required|unique:products,product_code',
+            'product_code' => 'required|unique:products,product_code|digits:8',
         ]);
 
         Product::create($request->all());
@@ -70,7 +71,7 @@ class AdminProductsController extends Controller
             'name' => 'required|unique:products,name,' . $product->id,
             'description' => 'required',
             'price' => 'required|numeric',
-            'product_code' => 'required|unique:products,product_code,' . $product->id,
+            'product_code' => 'required|digits:8|unique:products,product_code,' . $product->id,
         ]);
 
         $product->update($request->all());
@@ -83,6 +84,40 @@ class AdminProductsController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->route('admin.product.view')->with('success', 'Product deleted successfully');
+    }
+
+    // save product images
+    public function saveProductImage(Request $request, Product $product)
+    {
+        // validate
+        $request->validate([
+            'images' => 'required',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        // save the images to db and storage
+        foreach ($request->file('images') as $image) {
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('images/products'), $imageName);
+            $product->images()->create(['image' => $imageName]);
+        }
+
+        return redirect()->route('admin.product.show', $product->id)->with('success', 'Images uploaded successfully');
+    }
+
+    // delete product image
+    public function deleteProductImage(Product $product, ProductImages $image)
+    {
+        $product->images()->where('id', $image->id)->delete();
+
+        return redirect()->route('admin.product.show', $product->id)->with('success', 'Image deleted successfully');
+    }
+
+    public function uploadImagesPage(Product $product)
+    {
+        return view('pages.admin.uploadImages')->with('product', $product);
     }
 }
