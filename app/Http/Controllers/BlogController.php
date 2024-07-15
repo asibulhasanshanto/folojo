@@ -105,4 +105,10 @@ class BlogController extends Controller
 
         return view('pages.blog')->with('blog', $blog);
     }
+
+    public function destroy(Blog $blog)
+    {
+        $blog->delete();
+        return redirect()->route('admin.blog.view')->with('success', 'Blog deleted successfully');
+    }
 }

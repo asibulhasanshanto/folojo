@@ -57,6 +57,7 @@ Route::middleware('auth', 'admin')->group(function () {
     Route::get('/admin/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('admin.blog.edit');
     Route::patch('/admin/blogs/{blog}', [BlogController::class, 'update'])->name('admin.blog.update');
     Route::post('/admin/blogs', [BlogController::class, 'store'])->name('admin.blog.store');
+    Route::delete('/admin/blogs/{blog}', [BlogController::class, 'destroy'])->name('admin.blog.destroy');
     // admin blog image upload
     Route::post('/admin/blogs/images', [BlogController::class, 'uploadImagesPage'])->name('admin.blog.image.upload');
 });

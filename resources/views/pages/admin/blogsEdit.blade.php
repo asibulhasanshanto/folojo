@@ -60,7 +60,16 @@
                     </div>
                 </div>
             </form>
+
         </div>
+        {{-- add a delete form with delete action --}}
+        <form class="" action="{{ route('admin.blog.destroy', ['blog' => $blog]) }}" method="post">
+            @csrf
+            @method('DELETE')
+            <button type="submit"
+                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 my-3 rounded">Delete
+                Blog</button>
+        </form>
 
 
 
