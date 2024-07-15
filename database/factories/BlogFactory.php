@@ -18,7 +18,7 @@ class BlogFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence,
-            'content' => $this->faker->paragraphs(5, true),
+            'content' => $this->faker->paragraphs(20, true),
             'slug' => $this->faker->slug,
             'is_published' => $this->faker->boolean,
             'published_at' => $this->faker->dateTimeThisYear,

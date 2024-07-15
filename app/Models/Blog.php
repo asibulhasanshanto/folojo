@@ -13,5 +13,6 @@ class Blog extends Model
         'content',
         'slug',
         'is_published',
+        'published_at'
     ];
 }

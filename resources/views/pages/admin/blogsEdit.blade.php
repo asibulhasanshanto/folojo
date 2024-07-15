@@ -2,20 +2,21 @@
     <div class="container mt-10 px-4  sm:px-6  lg:px-8">
         {{-- create product button --}}
         <div class="flex justify-between items-center">
-            <h2 class="text-2xl font-semibold text-gray-900">Create new Blogs</h2>
+            <h2 class="text-2xl font-semibold text-gray-900">Edit Blogs</h2>
         </div>
 
         <div class="p-4 sm:p-8 bg-white  shadow sm:rounded-lg">
             {{-- a form with product name, price, description --}}
-            <form action="{{ route('admin.blog.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.blog.update', ['blog' => $blog]) }}" method="post"
+                enctype="multipart/form-data">
                 @csrf
-                @method('POST')
+                @method('PATCH')
                 <div class="space-y-4 md:space-y-0 md:grid gap-4">
                     <div>
                         <label for="title" class="font-bold bn_text">Title</label>
                         <input type="text" name="title" id="title"
                             class="w-full p-2 border  @error('title') border-red-500 @enderror rounded-md"
-                            value="{{ old('title') }}" placeholder="Blog Title">
+                            value="{{ old('title') ? old('title') : $blog->title }}" placeholder="Blog Title">
                         @error('title')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                         @enderror
@@ -24,7 +25,7 @@
                         <label for="slug" class="font-bold bn_text">Slug</label>
                         <input type="text" name="slug" id="slug"
                             class="w-full p-2 border  rounded-md @error('slug') border-red-500 @enderror"
-                            placeholder="slug" value="{{ old('slug') }}">
+                            placeholder="slug" value="{{ old('slug') ? old('slug') : $blog->slug }}">
                         @error('slug')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                         @enderror
@@ -45,7 +46,7 @@
                     <div class="col-span-2">
                         <label for="content" class="font-bold bn_text">content</label>
                         <textarea name="content" id="file-picker">
-                            {!! old('content') ? old('content') : '' !!}
+                            {{ old('content') ? old('content') : $blog->content }}
                         </textarea>
                         @error('content')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -54,7 +55,7 @@
                     </div>
                     <div class="col-span-2">
                         <button type="submit"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-3 rounded">Create
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-3 rounded">update
                             Blog</button>
                     </div>
                 </div>
@@ -101,6 +102,9 @@
                                 alert('Upload failed');
                             });
                         });
+
+
+
                         reader.readAsDataURL(file);
                     });
 
