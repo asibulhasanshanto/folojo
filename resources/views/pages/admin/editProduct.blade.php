@@ -9,7 +9,7 @@
             <form action="{{ route('admin.product.update', ['product' => $product]) }}" method="post">
                 @csrf
                 @method('PATCH')
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="space-y-4 md:space-y-0 md:grid gap-4">
                     <div>
                         <label for="name" class="font-bold bn_text">Name</label>
                         <input type="text" name="name" id="name"

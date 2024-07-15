@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminProductsController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +27,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // route for admins with admin middleware
-Route::middleware('auth','admin')->group(function () {
+Route::middleware('auth', 'admin')->group(function () {
     // dashboard
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // products
@@ -46,6 +47,12 @@ Route::middleware('auth','admin')->group(function () {
     // delete product image
     Route::delete('/admin/products/{product}/images/{image}', [AdminProductsController::class, 'deleteProductImage'])->name('admin.product.image.destroy');
 
+    // blogs route
+    Route::get('/admin/blogs', [BlogController::class, 'index'])->name('admin.blog.view');
+    Route::get('/admin/blogs/create', [BlogController::class, 'create'])->name('admin.blog.create');
+    Route::post('/admin/blogs', [BlogController::class, 'store'])->name('admin.blog.store');
+    // admin blog image upload
+    Route::post('/admin/blogs/images', [BlogController::class, 'uploadImagesPage'])->name('admin.blog.image.upload');
 });
 
 require __DIR__ . '/auth.php';

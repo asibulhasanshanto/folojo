@@ -26,8 +26,8 @@
 
             Products
         </a>
-        <a href="#"
-            class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center rounded-md py-2 px-2 text-base font-medium">
+        <a href="{{ route('admin.blog.view') }}"
+            class="{{ Str::contains(Route::currentRouteName(), 'blog') ? 'bg-gray-100' : '' }} text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center rounded-md py-2 px-2 text-base font-medium">
 
             <svg class="text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6 flex-shrink-0"
                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
