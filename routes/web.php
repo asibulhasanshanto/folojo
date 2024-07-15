@@ -18,6 +18,9 @@ Route::get('/about', function () {
 Route::get('/products', [ProductController::class, 'index'])->name('product.view');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('product.show');
 Route::get('/products/{product}/buy', [ProductController::class, 'buyNow'])->name('product.buy');
+// blog routes
+Route::get('/blogs', [BlogController::class, 'userIndex'])->name('blog.view');
+Route::get('/blogs/{slug}', [BlogController::class, 'userShow'])->name('blog.show');
 
 
 Route::middleware('auth')->group(function () {

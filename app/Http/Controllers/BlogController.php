@@ -43,7 +43,7 @@ class BlogController extends Controller
         }
         Blog::create($blog);
 
-        return redirect()->route('admin.blog.view');
+        return redirect()->route('admin.blog.view')->with('success', 'Blog created successfully');
     }
 
     public function show(Blog $blog)
@@ -75,7 +75,7 @@ class BlogController extends Controller
             $blog->published_at = null;
         }
         $blog->save();
-        return view('pages.admin.blogsView')->with('blog', $blog);
+        return view('pages.admin.blogsView')->with('blog', $blog)->with('success', 'Blog updated successfully');
     }
     public function uploadImagesPage(Request $request)
     {
@@ -84,5 +84,25 @@ class BlogController extends Controller
         $image->move(public_path('images/blog'), $imageName);
         $returnPath = url('images/blog/' . $imageName);
         return response()->json(['location' => $returnPath]);
+    }
+
+    public function userIndex()
+    {
+        $blogs = Blog::where('is_published', 1)->OrderBy(
+            'created_at',
+            'desc'
+        )->paginate(9);
+        return view('pages.blogs')->with('blogs', $blogs);
+    }
+
+    public function userShow($slug)
+    {
+        $blog = Blog::where('slug', $slug)->first();
+        if (!$blog || $blog->is_published == 0) {
+            return redirect()->route('blog.view')->with('error', 'Blog not found');
+        }
+
+
+        return view('pages.blog')->with('blog', $blog);
     }
 }

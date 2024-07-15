@@ -110,6 +110,16 @@
             });
         </script>
 
+        {{-- create slug from title --}}
+        <script>
+            document.getElementById('title').addEventListener('input', function(e) {
+                // document.getElementById('slug').value = e.target.value.toLowerCase().replace(/ /g, '-');
+                // replace special characters and spaces with hyphen
+                document.getElementById('slug').value = e.target.value.toLowerCase().replace(/[^a-zA-Z0-9 -]/g, '')
+                    .replace(/ /g, '-');
+            });
+        </script>
+
 
 
 </x-app-layout>

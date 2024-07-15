@@ -17,6 +17,6 @@ class ProductSeeder extends Seeder
             'product2.png',
         ];
         // seed product using products factory and also insert product images for each product
-        \App\Models\Product::factory(10)->create();
+    \App\Models\Product::factory(1)->create();
     }
 }
